@@ -5,7 +5,13 @@ description = "MIPT homeworks from base to production service"
 readme = "README.md"
 license = {text = "Apache License 2.0"}
 requires-python = "==3.13.*"
-dependencies = []
+dependencies = [
+    "aiofiles>=25.1.0",
+    "fastapi>=0.124.4",
+    "httpx>=0.28.1",
+    "pydantic>=2.12.5",
+    "uvicorn>=0.38.0",
+]
 
 [dependency-groups]
 dev = [
@@ -13,9 +19,11 @@ dev = [
     "mypy>=1.18.2",
     "pytest>=8.4.2",
     "ruff>=0.14.0",
+    "types-aiofiles>=25.1.0.20240311",
 ]
 lint = [
     "flakeheaven>=3.3.0",
     "mypy>=1.18.2",
     "ruff>=0.14.0",
+    "types-aiofiles>=25.1.0.20240311",
 ]
