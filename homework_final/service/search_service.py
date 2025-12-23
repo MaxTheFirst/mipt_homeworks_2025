@@ -6,6 +6,7 @@ from homework_final.model.search_params import SearchParams
 from homework_final.infrastructure.github_client import GitHubClient
 from homework_final.service.csv_service import CSVService
 
+
 class SearchService:
     async def search_repositories(
         self,

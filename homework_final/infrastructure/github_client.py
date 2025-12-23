@@ -6,8 +6,9 @@ from homework_final.model.search_params import SearchParams
 
 
 class GitHubClient:
-
-    def __init__(self, base_url: str, timeout: int = 30, error_timeout: float = 0.5) -> None:
+    def __init__(
+        self, base_url: str, timeout: int = 30, error_timeout: float = 0.5
+    ) -> None:
         self.base_url = base_url
         self.timeout = timeout
         self.error_timeout = error_timeout
@@ -16,11 +17,9 @@ class GitHubClient:
             "User-Agent": "GitHub-Search-API/1.0",
         }
         self._session: Optional[httpx.AsyncClient] = None
-    
+
     async def get_new_session(self) -> httpx.AsyncClient:
-        return httpx.AsyncClient(
-            timeout=self.timeout
-        )
+        return httpx.AsyncClient(timeout=self.timeout)
 
     async def get_session(self) -> httpx.AsyncClient:
         if self._session is None or self._session.is_closed:
@@ -31,7 +30,7 @@ class GitHubClient:
             self._session = await self.get_new_session()
 
         return self._session
-    
+
     @staticmethod
     def get_query(params_data: SearchParams) -> str:
         query_parts = [f"language:{params_data.lang}"]
@@ -145,6 +144,5 @@ class GitHubClient:
 
             page += 1
             intra_page_offset = 0
-
 
         return all_repositories

@@ -19,6 +19,7 @@ app = FastAPI(
     version="1.0.0",
 )
 
+
 @app.get("/search/repositories", summary="Поиск репозиториев GitHub")
 async def search_repositories(
     search_param: SearchParams,
@@ -28,11 +29,13 @@ async def search_repositories(
 ) -> Dict[str, Any]:
     return await search_service.search_repositories(search_param, client, csv_service)
 
+
 def main():
     if not os.path.exists("static"):
         os.makedirs("static")
 
     uvicorn.run(app, host="127.0.0.1", port=8000)
+
 
 if __name__ == "__main__":
     main()
